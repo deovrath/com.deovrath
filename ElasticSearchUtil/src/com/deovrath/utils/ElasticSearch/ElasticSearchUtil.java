@@ -39,22 +39,19 @@ import com.deovrath.utils.Logger.InOutError;
 
 public class ElasticSearchUtil 
 {
-	private final class Config
-	{
-		public static final String ELASTIC_SEARCH_SERVER = "ulvmctmfil200.internal.colt.net";
-		public static final int ELASTIC_SEARCH_SERVER_PORT = 9300;
-	}
 	
 	private static final String CLASS_NAME = ElasticSearchUtil.class.getSimpleName();
-	private static final TransportClient client = new PreBuiltTransportClient(Settings.EMPTY);
 	
-	static
+	private TransportClient client = null;
+	
+	public ElasticSearchUtil(String elasticSearchServer, int port)
 	{
 		try 
 		{
-			client.addTransportAddress(new TransportAddress(InetAddress.getByName(Config.ELASTIC_SEARCH_SERVER), Config.ELASTIC_SEARCH_SERVER_PORT));
+			this.client = new PreBuiltTransportClient(Settings.EMPTY);
+			this.client.addTransportAddress(new TransportAddress(InetAddress.getByName(elasticSearchServer), port));
 		} 
-		catch (Exception ex) 
+		catch (Exception ex)
 		{
 			InOutError.log_error(String.format("%s : Failed to init ElasticSearch server.", CLASS_NAME),ex);
 		}
