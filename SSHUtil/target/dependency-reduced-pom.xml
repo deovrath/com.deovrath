@@ -34,7 +34,7 @@
     <repository>
       <id>com.deovrath.utils.logger</id>
       <name>Deovrat - LoggerUtil</name>
-      <url>https://github.com/deovrath/deovrath-maven-repo</url>
+      <url>https://github.com/deovrath/com.deovrath/tree/master/LoggerUtil/target</url>
     </repository>
   </repositories>
   <properties>
