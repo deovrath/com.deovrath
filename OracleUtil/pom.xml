@@ -11,8 +11,8 @@
   
   <scm>
   	<url>https://github.com/deovrath/com.deovrath.git</url>
-  	<connection>scm:git:https://github.com/deovrath/com.deovrath.git</connection>
-  	<developerConnection>scm:git:https://github.com/deovrath/com.deovrath.git</developerConnection>  	
+  	<connection>scm:git:git@github.com:deovrath/com.deovrath.git</connection>
+  	<developerConnection>scm:git:git@github.com:deovrath/com.deovrath.git</developerConnection>  	
     <tag>com.deovrath.OracleUtil-0.0.1</tag>
   </scm>
   
@@ -54,7 +54,7 @@
                     <version>2.5.2</version>
                     <configuration>
                     	    <repositoryName>github-releases</repositoryName>
-                        <tagBase>https://github.com/deovrath/com.deovrath.git</tagBase>
+                        <tagBase>https://github.com/deovrath/com.deovrath</tagBase>
                         <releaseProfiles>release</releaseProfiles>
                         <checkModificationExcludes>
 					      <checkModificationExclude>OracleUtil/*pom.xml</checkModificationExclude>
