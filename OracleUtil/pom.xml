@@ -54,7 +54,7 @@
                     <version>2.5.2</version>
                     <configuration>
                     	    <repositoryName>github-releases</repositoryName>
-                        <tagBase>https://github.com/deovrath/com.deovrath</tagBase>
+                        <tagBase>https://github.com/deovrath/com.deovrath.git</tagBase>
                         <releaseProfiles>release</releaseProfiles>
                         <checkModificationExcludes>
 					      <checkModificationExclude>OracleUtil/*pom.xml</checkModificationExclude>
