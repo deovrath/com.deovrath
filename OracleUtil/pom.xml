@@ -11,7 +11,7 @@
   
   <scm>
   	<url>https://github.com/deovrath/com.deovrath</url>
-  	<connection>scm:git:https://github.com/deovrath/com.deovrath</connection>
+  	<connection>scm:git:git@deovrath.github.com/com.deovrath.git</connection>
   	<developerConnection>scm:git:git@deovrath.github.com/com.deovrath.git</developerConnection>  	
     <tag>com.deovrath.OracleUtil-0.0.1</tag>
   </scm>
