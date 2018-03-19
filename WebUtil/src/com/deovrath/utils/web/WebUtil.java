@@ -34,6 +34,73 @@ public class WebUtil
         }
         return hexString.toString();
     }
+    
+    public String executeRestWebService(String mUrl, String requestMethod, String body, Map<String,String> requestHeaders, InOutError error)
+    {
+        HttpURLConnection con = null;
+        OutputStream requestStream = null;
+        InputStream responseStream = null;
+
+        try
+        {
+            URL url = new URL(mUrl);
+
+            con = (HttpURLConnection) url.openConnection();
+            con.setDoOutput(true);
+            
+            con.setRequestMethod(requestMethod);
+            con.setRequestProperty("User-Agent","Apache-HttpClient/4.1.1 (java 1.5)");
+            
+            if(requestHeaders!=null)
+            {
+            		for(Map.Entry<String,String> entry : requestHeaders.entrySet())
+            		{
+            			con.setRequestProperty(entry.getKey(), entry.getValue());
+            		}
+            }
+            	
+            con.connect();
+            
+            if(body!=null)
+            {
+            		requestStream = con.getOutputStream();
+            		byte[] data = body.getBytes("utf-8");
+            		requestStream.write(data);
+            		requestStream.flush();
+            }
+
+            responseStream = con.getInputStream();
+
+            StringWriter writer = new StringWriter();
+            IOUtils.copy(responseStream, writer,"utf-8");
+
+            return(writer.toString());
+        }
+        catch(Exception ex)
+        {
+            error.setError(ex.getMessage());
+            return(null);
+        }
+        finally
+        {
+            try
+            {
+                if (responseStream != null) {
+                    responseStream.close();
+                }
+                if (requestStream != null) {
+                    requestStream.close();
+                }
+                if (con != null) {
+                    con.disconnect();
+                }
+            }
+            catch (IOException ioex)
+            {
+                // do nothing
+            }
+        }
+    }
 	
     public String executeSoapWebService(String mUrl, String soapMsg, String soapAction, Map<String,String> requestHeaders, InOutError error)
     {
@@ -66,6 +133,7 @@ public class WebUtil
 
             requestStream = con.getOutputStream();
             requestStream.write(data);
+            requestStream.flush();
 
             responseStream = con.getInputStream();
 

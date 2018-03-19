@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.deovrath.utils</groupId>
   <artifactId>com.deovrath.OracleUtil</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.3</version>
   <properties>
      	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
    </properties>
@@ -47,15 +47,23 @@
     			<artifactId>com.deovrath.LoggerUtil</artifactId>
     			<version>0.0.1</version>
    		</dependency>
- 		
+   		
+	   	 <dependency>
+	   	 	<groupId>com.jdbc.oracle</groupId>
+		 	<artifactId>ojdbc8</artifactId>
+		 	<version>8.0</version>
+	   	 </dependency>
+	   		
   </dependencies>
   
   <repositories>
+  
   	<repository>
-  		<id>com.deovrath.utils.logger</id>
-  		<name>Deovrat - LoggerUtil</name>
-  		<url>https://github.com/deovrath/com.deovrath/tree/master/LoggerUtil/target</url>
+  		<id>com.deovrath.utils</id>
+  		<name>Deovrat - MavenRepo</name>
+  		<url>https://github.com/deovrath/maven-repo-public</url>
   	</repository>
+  	
   </repositories>
   
 </project>

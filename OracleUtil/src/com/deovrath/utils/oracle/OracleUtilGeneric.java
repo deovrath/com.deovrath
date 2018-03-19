@@ -50,7 +50,7 @@ public class OracleUtilGeneric
 		try 
 		{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection cnn = DriverManager.getConnection(String.format("jdbc:oracle:thin:@//%s:%s/%s",host,port,sid),user,password); 
+			Connection cnn = DriverManager.getConnection(String.format("jdbc:oracle:thin:@%s:%s/%s",host,port,sid),user,password); 
 			return(cnn);
 		}
 		catch (ClassNotFoundException ex) 

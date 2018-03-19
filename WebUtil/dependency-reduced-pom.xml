@@ -4,7 +4,7 @@
   <groupId>com.deovrath.utils</groupId>
   <artifactId>com.deovrath.WebUtil</artifactId>
   <name>WebUtil</name>
-  <version>0.0.1</version>
+  <version>0.0.3</version>
   <description>Common http interface code.</description>
   <build>
     <sourceDirectory>src</sourceDirectory>
