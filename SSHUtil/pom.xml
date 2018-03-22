@@ -3,9 +3,6 @@
   <groupId>com.deovrath.Utils</groupId>
   <artifactId>com.deovrath.SSHUtil</artifactId>
   <version>0.0.1</version>
-  <properties>
-     	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-   </properties>
   <name>SSHUtil</name>
   <description>Use ssh functions from java code.</description>
   <build>
@@ -34,6 +31,41 @@
         </executions>
       </plugin>
       
+      <!--  START CODE for git checkin -->
+		      <plugin>
+		        <artifactId>maven-deploy-plugin</artifactId>
+		        <version>2.8.1</version>
+		        <configuration>
+		            <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
+		        </configuration>
+		    </plugin>
+		    
+		    
+		    <plugin>
+		        <groupId>com.github.github</groupId>
+		        <artifactId>site-maven-plugin</artifactId>
+		        <version>0.11</version>
+		        <configuration>
+		            <message>${project.name}-${project.version}</message>  <!-- git commit message -->
+		            <noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
+		            <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory> <!-- matches distribution management repository url above -->
+		            <branch>refs/heads/master</branch>                       <!-- remote branch name -->
+		            <includes><include>**/*</include></includes>
+		            <repositoryName>${project.name}</repositoryName>      	<!-- github repo name -->
+		            <repositoryOwner>deovrath</repositoryOwner>    			<!-- github username  -->
+		        </configuration>
+		        <executions>
+		          <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
+		          <execution>
+		            <goals>
+		              <goal>site</goal>
+		            </goals>
+		            <phase>deploy</phase>
+		          </execution>
+		        </executions>
+		     </plugin>
+      <!--  END CODE for git checkin -->
+      
     </plugins>
   </build>
   
@@ -54,10 +86,25 @@
   
   <repositories>
   	<repository>
-  		<id>com.deovrath.utils.logger</id>
-  		<name>Deovrat - LoggerUtil</name>
-  		<url>https://github.com/deovrath/com.deovrath/tree/master/LoggerUtil/target</url>
+  		<id>com.deovrath.LoggerUtil</id>
+  		<name>Deovrat - LoggerUtils</name>
+  		<url>https://github.com/deovrath/LoggerUtil</url>
   	</repository>
   </repositories>
+  
+  <!--  START CODE for git checkin -->
+		  <distributionManagement>
+		    <repository>
+		        <id>internal.repo</id>
+		        <name>Temporary Staging Repository</name>
+		        <url>file://${project.build.directory}/maven-repo</url>
+		    </repository>
+		 </distributionManagement>
+		 
+		 <properties>
+		 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		 	<github.global.server>github</github.global.server>
+		 </properties>
+ <!--  END CODE for git checkin -->
   
 </project>
